@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phenrir .45 - Mission Briefing</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter Font (Keeping Inter but styling it with a heavy, industrial feel) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --metal-dark: #2c2f33;
+            --metal-light: #4c5258;
+            --accent-red: #990000;
+            --background-paper: #f5f5dc; /* Beige/Cream */
+            --text-color: #f5f5dc;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--metal-dark);
+        }
+        .retro-panel {
+            background-color: var(--metal-dark);
+            border: 5px solid var(--metal-light);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+        }
+        .header-title {
+            color: var(--accent-red);
+            text-shadow: 1px 1px 0 #000;
+            letter-spacing: 0.15em;
+        }
+        .briefing-box {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 2px dashed var(--accent-red);
+        }
+        .game-iframe {
+            width: 100%;
+            /* 4:3 Aspect Ratio for classic screen feel (75%) */
+            height: 600px; 
+            border: 5px solid var(--accent-red);
+            background: #1a1a1a;
+            box-shadow: inset 0 0 10px var(--accent-red);
+        }
+        .btn-retro {
+            background-color: var(--accent-red);
+            color: var(--background-paper);
+            font-weight: 700;
+            border: 2px solid var(--background-paper);
+            box-shadow: 3px 3px 0 #000;
+            transition: all 0.1s;
+        }
+        .btn-retro:hover {
+            box-shadow: none;
+            transform: translate(3px, 3px);
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-2xl mx-auto p-8 rounded-lg retro-panel">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-black header-title uppercase">
+                PHENRIR .45
+            </h1>
+            <p class="text-xl text-gray-300 mt-1 uppercase">Top-Down Aerial Conflict Simulation</p>
+            <p class="text-sm text-gray-400 mt-2">MISSION START PROTOCOL v1.9.45</p>
+        </header>
+
+        <!-- IFrame Container for GameMaker Export -->
+        <div id="gameContainer" class="w-full mx-auto mb-8">
+            <!-- 
+                ACTION REQUIRED: Replace the 'src' attribute below with the URL or file path 
+                pointing directly to the index.html file of your GameMaker export.
+                
+                EXAMPLE: If your exported folder is named 'Phenrir_45_Export', use:
+                src="./Phenrir_45_Export/index.html"
+            -->
+            <iframe 
+                id="gameIframe" 
+                class="game-iframe" 
+                src="./index.html"
+                title="Phenrir .45 Game"
+                frameborder="0"
+                allowfullscreen
+            ></iframe>
+            <p class="text-xs text-center text-gray-400 mt-2">STATUS: CONNECTION ESTABLISHED. READY FOR DEPLOYMENT.</p>
+        </div>
+        
+        <!-- Mission Briefing & Controls -->
+        <div class="briefing-box p-4 rounded-lg">
+            <h3 class="text-xl font-bold uppercase mb-3 border-b pb-1 border-gray-600 text-red-300">Operational Briefing</h3>
+            <p class="text-sm leading-relaxed mb-4 text-gray-300">
+                Pilot, your combat unit is designated "Phenrir .45." Expect hostile air and ground contact throughout the sector. Maintain continuous fire and conserve energy. This mission is classified: Failure is not an option.
+            </p>
+            
+            <h4 class="text-lg font-semibold uppercase text-red-300 mb-2">Flight Controls:</h4>
+            <div class="flex flex-wrap justify-center gap-3 text-sm">
+                <span class="bg-gray-700/80 p-2 rounded font-mono border border-gray-600">THRUST (W / ↑)</span>
+                <span class="bg-gray-700/80 p-2 rounded font-mono border border-gray-600">YAW LEFT (A / ←)</span>
+                <span class="bg-gray-700/80 p-2 rounded font-mono border border-gray-600">YAW RIGHT (D / →)</span>
+                <span class="bg-gray-700/80 p-2 rounded font-mono border border-gray-600">FIRE (SPACE)</span>
+                <span class="bg-gray-700/80 p-2 rounded font-mono border border-gray-600">BOMB (CTRL)</span>
+            </div>
+            
+            <div class="text-center mt-6">
+                <button onclick="document.getElementById('gameIframe').focus();" class="btn-retro px-8 py-3 rounded-md text-lg">
+                    ENGAGE MISSION
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty script tag for structure. All game logic is now external via iframe. -->
+    <script>
+        // Use this simple function to ensure the user can click the button and immediately start interacting 
+        // with the game embedded in the iframe without needing to manually click inside it.
+    </script>
+</body>
+</html>
